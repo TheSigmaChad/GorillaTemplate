@@ -40,3 +40,5 @@ Need help? Have a feature request? Join our discord! https://discord.gg/aSfYnfht
 
 ### Tutorials
 Have you created a YouTube tutorial or TikTok? Let us know in [Discord](https://discord.gg/aSfYnfhtE3) and we'll feature it right here!
+
+[![How to Make a Gorilla Tag Fan Game in 5 Minutes 👍](./docs/assets/tutorials/garett_the_gamer.jpg)](https://www.youtube.com/watch?v=cYANUINPako)
