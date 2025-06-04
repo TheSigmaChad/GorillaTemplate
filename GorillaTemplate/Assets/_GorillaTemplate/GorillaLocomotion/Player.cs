@@ -1,6 +1,32 @@
-﻿namespace GorillaLocomotion
+﻿using System.Runtime.CompilerServices;
+
+namespace GorillaLocomotion
 {
     using UnityEngine;
+
+    // A backwards-compatible wrapper for Rigidbody linear velocity
+    public static class RigidBodyExtensions
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 GetLinearVelocity(this Rigidbody rigidbody)
+        {
+#if UNITY_6000_0_OR_NEWER
+            return rigidbody.linearVelocity;
+#else
+            return rigidbody.velocity;
+#endif
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetLinearVelocity(this Rigidbody rigidbody, Vector3 value)
+        {
+#if UNITY_6000_0_OR_NEWER
+            rigidbody.linearVelocity = value;
+#else
+            rigidbody.velocity = value;
+#endif
+        }
+    }
 
     public class Player : MonoBehaviour
     {
@@ -134,7 +160,7 @@
                 {
                     firstIterationLeftHand = finalPosition - CurrentLeftHandPosition();
                 }
-                playerRigidBody.linearVelocity = Vector3.zero;
+                playerRigidBody.SetLinearVelocity(Vector3.zero);
 
                 leftHandColliding = true;
             }
@@ -154,7 +180,7 @@
                     firstIterationRightHand = finalPosition - CurrentRightHandPosition();
                 }
 
-                playerRigidBody.linearVelocity = Vector3.zero;
+                playerRigidBody.SetLinearVelocity(Vector3.zero);
 
                 rightHandColliding = true;
             }
@@ -226,11 +252,11 @@
                 {
                     if (denormalizedVelocityAverage.magnitude * jumpMultiplier > maxJumpSpeed)
                     {
-                        playerRigidBody.linearVelocity = denormalizedVelocityAverage.normalized * maxJumpSpeed;
+                        playerRigidBody.SetLinearVelocity(denormalizedVelocityAverage.normalized * maxJumpSpeed);
                     }
                     else
                     {
-                        playerRigidBody.linearVelocity = jumpMultiplier * denormalizedVelocityAverage;
+                        playerRigidBody.SetLinearVelocity(jumpMultiplier * denormalizedVelocityAverage);
                     }
                 }
             }
