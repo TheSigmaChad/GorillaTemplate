@@ -1501,7 +1501,7 @@ ParentConstraint:
   m_Active: 1
   m_IsLocked: 1
   m_Sources:
-  - sourceTransform: {fileID: 3373368345732999406}
+  - sourceTransform: {fileID: 2754348783282783508}
     weight: 1
 --- !u!54 &6679648445487035258
 Rigidbody:
@@ -2182,7 +2182,6 @@ GameObject:
   - component: {fileID: 95281907010821359}
   - component: {fileID: 4783374433993431108}
   - component: {fileID: 6343823678630949964}
-  - component: {fileID: 2270913711914472305}
   m_Layer: 0
   m_Name: Speaker Icon
   m_TagString: Untagged
@@ -2258,28 +2257,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2270913711914472305
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8124994007974549114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8138886200857303194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,7 +2505,7 @@ ParentConstraint:
   m_Active: 1
   m_IsLocked: 1
   m_Sources:
-  - sourceTransform: {fileID: 964076285481562067}
+  - sourceTransform: {fileID: 7206522701932953539}
     weight: 1
 --- !u!54 &2478434221649713479
 Rigidbody:
@@ -2716,11 +2693,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3445625025023550347, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
   m_PrefabInstance: {fileID: 3121834957641498419}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &964076285481562067 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2752801205466927328, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
-  m_PrefabInstance: {fileID: 3121834957641498419}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1858646509489494339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3646158118913189488, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
@@ -2729,6 +2701,11 @@ Transform:
 --- !u!1 &2136504290082244729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3959964861670979402, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
+  m_PrefabInstance: {fileID: 3121834957641498419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2754348783282783508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8256340588219614681, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
   m_PrefabInstance: {fileID: 3121834957641498419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2851787415261217378 stripped
@@ -2753,11 +2730,6 @@ MonoBehaviour:
 --- !u!4 &3231408770456443096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
-  m_PrefabInstance: {fileID: 3121834957641498419}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3373368345732999406 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 396986342517004253, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
   m_PrefabInstance: {fileID: 3121834957641498419}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3560332844681702537 stripped
@@ -2803,6 +2775,11 @@ Transform:
 --- !u!137 &6620887093114275444 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8120238488434358599, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
+  m_PrefabInstance: {fileID: 3121834957641498419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7206522701932953539 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3508222274973056784, guid: 2a21c89909497934d99180d57c72cbac, type: 3}
   m_PrefabInstance: {fileID: 3121834957641498419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7895909830692905083 stripped
