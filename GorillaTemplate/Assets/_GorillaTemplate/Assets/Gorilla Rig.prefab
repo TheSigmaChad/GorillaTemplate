@@ -862,6 +862,7 @@ GameObject:
   - component: {fileID: 4757890869574275848}
   - component: {fileID: 7942131617446689927}
   - component: {fileID: 2916109115602520822}
+  - component: {fileID: 8831524098203269302}
   m_Layer: 0
   m_Name: Gorilla Rig
   m_TagString: Untagged
@@ -990,6 +991,23 @@ MonoBehaviour:
   _handTransform: {fileID: 430285557067231375}
   _trackedPoseDriver: {fileID: 7563712660881278272}
   _smoothingFactor: 0.2
+--- !u!114 &8831524098203269302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430285557273465589}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9b454ea5bb43f6b4504e4180a7a451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 430285557519011168}
+  _movementSpeed: 3
+  _jumpVelocity: 4
+  _turnSpeed: 35
+  _holdLeftMouseToTurn: 1
 --- !u!1 &430285557519011101
 GameObject:
   m_ObjectHideFlags: 0
