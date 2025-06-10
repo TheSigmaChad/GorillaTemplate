@@ -36,6 +36,20 @@ namespace Normal.GorillaTemplate {
                 currentModel.indexClosedDidChange += OnIndexClosedDidChange;
                 currentModel.middleClosedDidChange += OnMiddleClosedDidChange;
                 currentModel.thumbClosedDidChange += OnThumbClosedDidChange;
+
+                if (currentModel.isFreshModel) {
+                    if (_localPoseTracker != null) {
+                        currentModel.indexClosed = _localPoseTracker.GetFingerState(FingerType.Index);
+                        currentModel.middleClosed = _localPoseTracker.GetFingerState(FingerType.Middle);
+                        currentModel.thumbClosed = _localPoseTracker.GetFingerState(FingerType.Thumb);
+                    }
+                } else {
+                    if (onFingerStateChanged != null) {
+                        onFingerStateChanged.Invoke(FingerType.Index, currentModel.indexClosed);
+                        onFingerStateChanged.Invoke(FingerType.Middle, currentModel.middleClosed);
+                        onFingerStateChanged.Invoke(FingerType.Thumb, currentModel.thumbClosed);
+                    }
+                }
             }
         }
 

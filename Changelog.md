@@ -1,3 +1,7 @@
+[1.0.3]
+- Fixed invisible player bug.
+- Improved finger animation sync.
+
 [1.0.2]
 - Fixed finger bone naming.
 - Removed the unused collider on Speaker Icon.

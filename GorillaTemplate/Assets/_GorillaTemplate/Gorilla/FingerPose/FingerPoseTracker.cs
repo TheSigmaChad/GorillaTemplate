@@ -25,7 +25,30 @@ namespace Normal.GorillaTemplate {
         [SerializeField]
         private InputActionReference _thumbFingerClosed;
 
+        private float _indexFingerValue;
+        private float _middleFingerValue;
+        private float _thumbFingerValue;
+
+        /// <summary>
+        /// Invoked when the state of a finger changes.
+        /// </summary>
         public event Action<FingerType, float> onFingerStateChanged;
+
+        /// <summary>
+        /// Returns the most recent state of the specified finger.
+        /// </summary>
+        public float GetFingerState(FingerType type) {
+            switch (type) {
+                case FingerType.Index:
+                    return _indexFingerValue;
+                case FingerType.Middle:
+                    return _middleFingerValue;
+                case FingerType.Thumb:
+                    return _thumbFingerValue;
+                default:
+                    throw new ArgumentException($"Unexpected {nameof(FingerType)}: {type}");
+            }
+        }
 
         private void OnEnable() {
             _indexFingerClosed.action.Enable();
@@ -42,27 +65,33 @@ namespace Normal.GorillaTemplate {
         }
 
         private void OnIndexFingerPerformed(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Index, ctx.ReadValue<float>());
+            _indexFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Index, _indexFingerValue);
         }
 
         private void OnIndexFingerCanceled(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Index, ctx.ReadValue<float>());
+            _indexFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Index, _indexFingerValue);
         }
 
         private void OnMiddleFingerPerformed(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Middle, ctx.ReadValue<float>());
+            _middleFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Middle, _middleFingerValue);
         }
 
         private void OnMiddleFingerCanceled(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Middle, ctx.ReadValue<float>());
+            _middleFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Middle, _middleFingerValue);
         }
 
         private void OnThumbFingerPerformed(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Thumb, ctx.ReadValue<float>());
+            _thumbFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Thumb, _thumbFingerValue);
         }
 
         private void OnThumbFingerCanceled(InputAction.CallbackContext ctx) {
-            onFingerStateChanged?.Invoke(FingerType.Thumb, ctx.ReadValue<float>());
+            _thumbFingerValue = ctx.ReadValue<float>();
+            onFingerStateChanged?.Invoke(FingerType.Thumb, _thumbFingerValue);
         }
     }
 }

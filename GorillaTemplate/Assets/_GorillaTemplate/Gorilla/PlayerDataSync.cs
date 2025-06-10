@@ -129,6 +129,8 @@ namespace Normal.GorillaTemplate {
                 } else {
                     _nameTag = currentModel.nameTag;
                     _color   = currentModel.color;
+
+                    SyncVisuals();
                 }
             }
         }
