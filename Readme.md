@@ -8,6 +8,7 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 
 ### Features
 - Multiplayer
+- Voice Chat
 - Unity 6 Support
 - [Gorilla Locomotion](https://github.com/NormalVR/GorillaLocomotion)
 - Smooth and snap turn
