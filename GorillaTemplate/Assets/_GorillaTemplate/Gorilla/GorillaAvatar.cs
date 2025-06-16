@@ -39,6 +39,9 @@ namespace Normal.GorillaTemplate {
 
         private void Awake() {
             _localCullingLayerCached = LayerMask.NameToLayer(_localCullingLayer);
+            if (_localCullingLayerCached == -1) {
+                Debug.LogError($"No layer found with name '{_localCullingLayer}'");
+            }
         }
 
         /// <summary>

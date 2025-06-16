@@ -1,3 +1,9 @@
+[1.1.0]
+- Added a network-synced cosmetics system.
+- Added many pre-built cosmetics.
+- Added a wardrobe system.
+- Added a tool for easily swapping the player model.
+
 [1.0.3]
 - Fixed invisible player bug.
 - Improved finger animation sync.
