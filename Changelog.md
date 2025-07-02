@@ -1,3 +1,8 @@
+[1.2.0]
+- Added a new map to explore (Forest).
+- Added objects that can be grabbed and thrown.
+- Made optimizations to the mirror script.
+
 [1.1.0]
 - Added a network-synced cosmetics system.
 - Added many pre-built cosmetics.
