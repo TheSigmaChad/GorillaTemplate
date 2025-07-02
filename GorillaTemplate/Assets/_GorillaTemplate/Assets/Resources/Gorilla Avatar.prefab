@@ -299,6 +299,7 @@ Transform:
   - {fileID: 1186773083138771238}
   - {fileID: 2772612256999724185}
   - {fileID: 1716347934130244365}
+  - {fileID: 4203222726833476475}
   m_Father: {fileID: 430285557273465591}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!114 &3269073602356860168
@@ -325,7 +326,9 @@ MonoBehaviour:
     component: {fileID: 763516223228927711}
   - componentID: 2
     component: {fileID: 6754228908437280619}
-  _childViews: []
+  _childViews:
+  - componentID: 1
+    component: {fileID: 935605885546626112}
 --- !u!114 &763516223228927711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +424,7 @@ Transform:
   - {fileID: 3705938187868317557}
   - {fileID: 4575424109255790526}
   - {fileID: 797396585956663092}
+  - {fileID: 7798333294131285696}
   m_Father: {fileID: 430285557273465591}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!114 &9084090599511798360
@@ -447,7 +451,9 @@ MonoBehaviour:
     component: {fileID: 7400483136116959671}
   - componentID: 2
     component: {fileID: 6519846937986014576}
-  _childViews: []
+  _childViews:
+  - componentID: 1
+    component: {fileID: 4410452105823678352}
 --- !u!114 &7400483136116959671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +532,7 @@ GameObject:
   - component: {fileID: 1868401425240756513}
   - component: {fileID: 9138902169932451328}
   - component: {fileID: 6450564752328040356}
+  - component: {fileID: 4111298426658386971}
   - component: {fileID: 2434470599676801062}
   - component: {fileID: 6967101539809747549}
   - component: {fileID: 4985070581388613681}
@@ -777,6 +784,90 @@ MonoBehaviour:
   _hitboxes:
   - {fileID: 3556204868296739438}
   - {fileID: 1437827913141853888}
+--- !u!114 &4111298426658386971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430285557273465589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc74042b16c45bb9771ce2714d4f765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rightHand: {fileID: 5784663276533487421}
+  _leftHand: {fileID: 5023442052029655329}
+  _bodyRoot: {fileID: 430285557273465591}
+  _throwSettings:
+    maxLinearVelocityByWeight:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 30
+        inSlope: -7.270732
+        outSlope: -7.270732
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.09713214
+      - serializedVersion: 3
+        time: 7
+        value: 3.5000114
+        inSlope: -0.16000155
+        outSlope: -0.16000155
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 50
+        value: 1.4999924
+        inSlope: -0.051995583
+        outSlope: -0.051995583
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.81878084
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    linearVelocityMultiplier: 1
+    maxAngularVelocityByWeight:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 12
+        inSlope: -3.5002346
+        outSlope: -3.5002346
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.057508815
+      - serializedVersion: 3
+        time: 5.246872
+        value: 2.023283
+        inSlope: -0.1299923
+        outSlope: -0.1299923
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 49.95
+        value: 0.40000382
+        inSlope: -0.017666176
+        outSlope: -0.017666176
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.14682804
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    angularVelocityMultiplier: 1
 --- !u!114 &2434470599676801062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,6 +1588,274 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.018
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3594219438182943647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4203222726833476475}
+  - component: {fileID: 935605885546626112}
+  - component: {fileID: 5784663276533487421}
+  m_Layer: 0
+  m_Name: Grabber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4203222726833476475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594219438182943647}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.030000001, y: 0, z: 0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 430285556596328392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &935605885546626112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594219438182943647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 5784663276533487421}
+  _childViews: []
+--- !u!114 &5784663276533487421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594219438182943647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c96abbf6c144268d26c7f74cbf6da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grabber: {fileID: 4111298426658386971}
+  _objectDetectorSettings:
+    radius: 0.15
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 131072
+  _grabInputAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Input
+      m_Type: 0
+      m_ExpectedControlType: Button
+      m_Id: 0fcf3b57-479c-4d4b-a055-6685e3e10987
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 3768362662450033376, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handPositionAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Position
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6c4a70a4-12b6-4684-8ea9-5c596f0d364a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8104662295170079945, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handRotationAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Rotation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: fc5f16a9-228c-4cd9-ae15-1f578c690345
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6418197260762754851, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handLinearVelocityAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Linear Velocity
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 2f13c3fc-cbf2-4ac8-999b-6c574b1c5eee
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -877746014405904819, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handAngularVelocityAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Angular Velocity
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 465e1b49-15d0-4d7e-a815-ba8aaa204635
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -9066850566471510122, guid: d30355ffd2a462f48963c08101163154, type: 3}
+--- !u!1 &4421360843961947718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7798333294131285696}
+  - component: {fileID: 4410452105823678352}
+  - component: {fileID: 5023442052029655329}
+  m_Layer: 0
+  m_Name: Grabber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7798333294131285696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421360843961947718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: 0, z: 0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 430285556925871860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4410452105823678352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421360843961947718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 5023442052029655329}
+  _childViews: []
+--- !u!114 &5023442052029655329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421360843961947718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c96abbf6c144268d26c7f74cbf6da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grabber: {fileID: 4111298426658386971}
+  _objectDetectorSettings:
+    radius: 0.15
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 131072
+  _grabInputAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Input
+      m_Type: 0
+      m_ExpectedControlType: Button
+      m_Id: 0fcf3b57-479c-4d4b-a055-6685e3e10987
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5711576702002137329, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handPositionAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Position
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 67e4131e-c06c-48c3-9e65-1428e02e79e0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6745231784646589452, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handRotationAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Rotation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 949b81d6-c911-4319-81aa-0bc8d86c3a41
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1575702914290246170, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handLinearVelocityAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Linear Velocity
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 2f13c3fc-cbf2-4ac8-999b-6c574b1c5eee
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 3892483977529713743, guid: d30355ffd2a462f48963c08101163154, type: 3}
+  _handAngularVelocityAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hand Angular Velocity
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 465e1b49-15d0-4d7e-a815-ba8aaa204635
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5656222143750185073, guid: d30355ffd2a462f48963c08101163154, type: 3}
 --- !u!1 &4502289443804087461
 GameObject:
   m_ObjectHideFlags: 0

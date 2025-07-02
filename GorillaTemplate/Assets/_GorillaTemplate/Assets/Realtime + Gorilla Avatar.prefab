@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 99313689805041146}
   - component: {fileID: 6693574861097370393}
   - component: {fileID: 9127752703490469373}
+  - component: {fileID: 2158251924802783094}
   m_Layer: 0
   m_Name: Realtime + Gorilla Avatar
   m_TagString: Untagged
@@ -89,7 +90,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7913670023823838024}
         m_TargetAssemblyTypeName: Normal.SeamlessRooms.SeamlessRoomConnecter, Assembly-CSharp
         m_MethodName: ConnectToRoom
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -126,5 +127,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad5ab7d6c683cf4eaad1aa115bde575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2158251924802783094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117176247639341373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28276fcecb34295b394c5a16799b270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

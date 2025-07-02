@@ -62,6 +62,11 @@ public class Mirror : MonoBehaviour {
     public int antiAliasing = 4;
 
     /// <summary>
+    /// The filtering mode of the mirror surface texture.
+    /// </summary>
+    public FilterMode filterMode = FilterMode.Bilinear;
+
+    /// <summary>
     /// Scales the far plane of the reflection, for tuning performance.
     /// </summary>
     [Range(0.0001f, 1f)]
@@ -71,6 +76,11 @@ public class Mirror : MonoBehaviour {
     /// Use this to control which objects are rendered in the reflection.
     /// </summary>
     public LayerMask reflectionMask = -1;
+
+    /// <summary>
+    /// Controls if this mirror should render shadows.
+    /// </summary>
+    public bool renderShadows = true;
 
     /// <summary>
     /// When true, mirror rendering is skipped when it's not inside the visible frustum.
@@ -313,6 +323,12 @@ public class Mirror : MonoBehaviour {
             return;
         }
 
+        var additionalCameraData = _mirrorCamera.GetComponent<UniversalAdditionalCameraData>();
+        if (additionalCameraData == null) {
+            additionalCameraData = _mirrorCamera.gameObject.AddComponent<UniversalAdditionalCameraData>();
+        }
+        additionalCameraData.renderShadows = renderShadows;
+
         // Apply reflection mask
         _mirrorCamera.cullingMask = reflectionMask;
 
@@ -397,14 +413,14 @@ public class Mirror : MonoBehaviour {
         }
 
         var rtd = new RenderTextureDescriptor(size.x, size.y, RenderTextureFormat.Default, 24) {
-            sRGB = true
+            sRGB = true,
         };
 
         var rt = new RenderTexture(rtd) {
             name = rtName,
-            filterMode = FilterMode.Bilinear,
+            filterMode = filterMode,
             wrapMode = TextureWrapMode.Clamp,
-            antiAliasing = antiAliasing
+            antiAliasing = antiAliasing,
         };
 
         rt.Create();

@@ -17,6 +17,12 @@ namespace Normal.GorillaTemplate {
         private Player _player;
 
         /// <summary>
+        /// This Transform is used to convert device tracking data
+        /// (ex linear or angular XR controller velocity reported by the Unity Input System) into world-space coordinates.
+        /// </summary>
+        public Transform playerRootTransform => _player.transform;
+
+        /// <summary>
         /// The component that controls player turning.
         /// </summary>
         [SerializeField]

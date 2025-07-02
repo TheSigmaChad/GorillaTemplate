@@ -966,6 +966,214 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Grabbable Objects",
+            "id": "c173e820-1d41-4202-98b3-a92c51078f5b",
+            "actions": [
+                {
+                    "name": "Left Hand Grab",
+                    "type": "Value",
+                    "id": "1be862f2-04fb-47e9-8f88-931d0ea333b8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left Hand Position",
+                    "type": "Value",
+                    "id": "384faaf2-f8e5-418e-9ded-76982a216fe4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left Hand Rotation",
+                    "type": "Value",
+                    "id": "5308191b-3350-4079-8df0-266ab4ab3fc0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left Hand Linear Velocity",
+                    "type": "Value",
+                    "id": "c7aa066a-65ba-4008-9b4b-9e4490a9dd1c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left Hand Angular Velocity",
+                    "type": "Value",
+                    "id": "0bfb73e1-a6fd-4a9a-9160-7b10802b863e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Hand Grab",
+                    "type": "Value",
+                    "id": "c27788f8-367a-4c6b-b2e4-7a2bba6c6956",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Hand Position",
+                    "type": "Value",
+                    "id": "9f5b44fb-06a9-437b-84d4-3114026973b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Hand Rotation",
+                    "type": "Value",
+                    "id": "29afbf81-f446-44ef-9377-9c3334cd4d31",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Hand Linear Velocity",
+                    "type": "Value",
+                    "id": "6c19db27-78bc-46c1-8af9-9d79bc4e742a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Hand Angular Velocity",
+                    "type": "Value",
+                    "id": "f3b04dc4-b50d-412d-b802-6af84c4002fd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "edad9982-a12f-44eb-b55f-0e12c2cdfefd",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hand Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "787f29b9-3ceb-4a89-9aab-57d918e54608",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hand Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e01659a5-ece9-494a-9765-928f80021ffa",
+                    "path": "<XRController>{LeftHand}/deviceVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hand Linear Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfc341da-a9dd-4fae-b6f2-36e4dbe73915",
+                    "path": "<XRController>{LeftHand}/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hand Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb0e596d-39e7-4c9c-9d69-5a1872bf7151",
+                    "path": "<XRController>{LeftHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hand Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfcb51b0-e10b-4039-b6b7-414a3de7b413",
+                    "path": "<XRController>{RightHand}/deviceVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hand Linear Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e48a2ea1-7ba2-46d4-a28c-acca1777e9d9",
+                    "path": "<XRController>{RightHand}/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hand Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97bc3373-f7aa-4066-aff8-608d26e98630",
+                    "path": "<XRController>{RightHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hand Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6e02309-4947-4062-86a2-310711d522a0",
+                    "path": "<XRController>{LeftHand}/deviceAngularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hand Angular Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f39da56-6227-48ed-ada0-4700de365f30",
+                    "path": "<XRController>{RightHand}/deviceAngularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hand Angular Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
