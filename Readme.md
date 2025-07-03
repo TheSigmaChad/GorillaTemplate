@@ -11,6 +11,7 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 - Voice Chat
 - Unity 6 Support
 - [Gorilla Locomotion](https://github.com/NormalVR/GorillaLocomotion)
+- Player model and forest map
 - Smooth and snap turn
 - Finger animations
 - Haptics
@@ -21,12 +22,9 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 - Nametags
 - Mute / Unmute
 - Leaderboard
-- Cosmetics (in-progress)
-  - Color switcher
-  - Items (in-progress)
-  - PlayFab (in-progress)
-- Grabbable objects (in-progress)
-- In-App Purchases (in-progress)
+- Cosmetics
+- Grabbable objects
+- PlayFab & in-app purchases (in-progress)
 
 ### Getting Started
 1. [Download](https://github.com/NormalVR/GorillaTemplate/archive/refs/heads/main.zip) a copy of the template.
