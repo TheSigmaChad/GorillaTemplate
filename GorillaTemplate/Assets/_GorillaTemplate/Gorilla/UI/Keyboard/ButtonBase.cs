@@ -7,6 +7,42 @@ namespace Normal.GorillaTemplate.Keyboard {
     /// </summary>
     public abstract class ButtonBase : MonoBehaviour {
         /// <summary>
+        /// The modes of interaction a button can use.
+        /// </summary>
+        public enum TriggerMode {
+            /// <summary>
+            /// The button is considered pressed immediately when the user presses down on it.
+            /// </summary>
+            Press,
+
+            /// <summary>
+            /// The button is considered pressed after the user holds down on it for a certain duration.
+            /// If the user releases before the duration is complete, it is not pressed.
+            /// </summary>
+            LongPress,
+        }
+
+        [SerializeField]
+        private TriggerMode _triggerMode = TriggerMode.Press;
+
+        /// <summary>
+        /// The modes of interaction the button can use.
+        /// </summary>
+        public TriggerMode triggerMode {
+            get => _triggerMode;
+            set => _triggerMode = value;
+        }
+
+        [SerializeField]
+        [Tooltip("The duration, in seconds, that the user must hold down on the button for it to be considered pressed. Only used when \"Trigger Mode\" is set to \"LongPress\".")]
+        private float _longPressDuration = 1f;
+
+        /// <summary>
+        /// The duration, in seconds, that the user must hold down on the button for it to be considered pressed. Only used when <see cref="TriggerMode.LongPress"/> is selected.
+        /// </summary>
+        public float longPressDuration => _longPressDuration;
+
+        /// <summary>
         /// The child GameObject that holds the visual representation of the button.
         /// </summary>
         [SerializeField]
@@ -34,6 +70,27 @@ namespace Normal.GorillaTemplate.Keyboard {
         /// </summary>
         private int _triggerCount;
 
+        private bool _hasPressed;
+
+        /// <summary>
+        /// The duration, in seconds, for which the button has been pressed.
+        /// </summary>
+        public float currentPressDuration { get; private set; }
+
+        /// <summary>
+        /// The progress, from 0 to 1, until this long press button is considered pressed.
+        /// </summary>
+        /// <seealso cref="TriggerMode.LongPress"/>
+        public float longPressProgress {
+            get {
+                if (Mathf.Approximately(longPressDuration, 0f)) {
+                    return 0f;
+                }
+
+                return Mathf.Clamp01(currentPressDuration / longPressDuration);
+            }
+        }
+
         protected virtual void Awake() {
             _originalPosition = _visuals.transform.localPosition;
         }
@@ -51,7 +108,11 @@ namespace Normal.GorillaTemplate.Keyboard {
         private void OnTriggerEnter(Collider other) {
             // Ignore presses from other fingers
             if (_triggerCount == 0) {
-                OnPressed();
+                currentPressDuration = 0f;
+
+                if (_triggerMode == TriggerMode.Press) {
+                    OnPressed();
+                }
             }
 
             _triggerCount++;
@@ -59,9 +120,15 @@ namespace Normal.GorillaTemplate.Keyboard {
 
         private void OnTriggerExit(Collider other) {
             _triggerCount--;
+
+            if (_triggerCount == 0) {
+                currentPressDuration = 0f;
+                _hasPressed = false;
+            }
         }
 
         private void OnPressed() {
+            _hasPressed = true;
             HandlePress();
             ApplyOnPressedFX();
         }
@@ -77,6 +144,14 @@ namespace Normal.GorillaTemplate.Keyboard {
         }
 
         protected virtual void Update() {
+            if (_triggerCount > 0) {
+                currentPressDuration += Time.deltaTime;
+
+                if (_triggerMode == TriggerMode.LongPress && !_hasPressed && currentPressDuration >= _longPressDuration) {
+                    OnPressed();
+                }
+            }
+
             UpdateFX();
         }
 

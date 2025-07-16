@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Face_MustacheDastardly
 --- !u!4 &1049930687225664883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f6f2cf74af20ed249ac95539a3e1c735, type: 3}
@@ -169,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &898957537103405350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c30c34bf23eb9a43a7c1f2d1c92ff9c, type: 3}
@@ -256,6 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &1930613113396771278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a6e8346aa9e502c41a06dedd96222a2a, type: 3}
@@ -343,6 +349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Face_Monocle
 --- !u!4 &3114417902705837020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 71e971d1f37656c4e9b8927d562cbdf4, type: 3}
@@ -435,6 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &4383248851046068539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -517,6 +527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Face_EyebrowsAngry
 --- !u!4 &4278090781262091984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8b85af32a491eb41997274152f63cfe, type: 3}
@@ -730,6 +742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &5362663342799688007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7ae518b6b095914fb771140666526fc, type: 3}
@@ -817,6 +831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &8935003992945281025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d121227969d84a040aef44f2a930784c, type: 3}

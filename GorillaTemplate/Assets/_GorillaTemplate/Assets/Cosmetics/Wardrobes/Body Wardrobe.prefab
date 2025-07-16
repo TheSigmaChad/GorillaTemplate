@@ -87,6 +87,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &4479441716223959678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,6 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Body_Hoodie_PinkHPOF
 --- !u!1001 &5100649521123530250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,6 +374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &6957410778935627681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -457,6 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Body_PuffVest
 --- !u!1001 &8521915789806089331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,6 +547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &5755253919010238131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4151520271085902528, guid: 7b73b0dcc9298cc41b3b7331d91a36c0, type: 3}

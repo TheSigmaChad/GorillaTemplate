@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &3164925772806093357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97bbf3b463daafd4ea7f0d45034d6abf, type: 3}
@@ -277,6 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &6706013188414216829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +365,8 @@ MonoBehaviour:
   _cosmeticNameOverrides:
   - Wrist_SpikeBracer Right
   - Wrist_SpikeBracer Left
+  _catalog: Cosmetics
+  _itemId: Wrist_SpikeBracer
 --- !u!4 &6528585630442519958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9cf0f629ae21e564eb0676d161f7eabf, type: 3}

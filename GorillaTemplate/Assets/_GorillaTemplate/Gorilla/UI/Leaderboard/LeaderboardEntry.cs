@@ -56,7 +56,7 @@ namespace Normal.GorillaTemplate.UI.Leaderboard {
             OnPlayerDataChanged(_avatar.playerDataSync);
 
             SetToggle(avatar.voice.mute);
-            _muteToggleButton.onPressed += OnMuteToggled;
+            _muteToggleButton.onPressed.AddListener(OnMuteToggled);
 
             // Underline the name for the local player
             _nameLabel.fontStyle = isLocalPlayer ? TMPro.FontStyles.Underline : TMPro.FontStyles.Normal;
@@ -68,7 +68,7 @@ namespace Normal.GorillaTemplate.UI.Leaderboard {
             }
 
             if (_muteToggleButton != null) {
-                _muteToggleButton.onPressed -= OnMuteToggled;
+                _muteToggleButton.onPressed.RemoveListener(OnMuteToggled);
             }
         }
 

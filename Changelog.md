@@ -1,3 +1,10 @@
+[1.3.0]
+- Added support for PlayFab
+- Added in-app purchasing of virtual currency and cosmetics using PlayFab
+- Added catalog and itemId to WardrobeItem for PlayFab support
+- Added ButtonBase.TriggerMode.LongPress
+- Changed SimpleButton.onPressed from a UnityAction to a UnityEvent
+
 [1.2.0]
 - Added a new map to explore (Forest).
 - Added objects that can be grabbed and thrown.
