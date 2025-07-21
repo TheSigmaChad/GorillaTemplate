@@ -138,7 +138,7 @@ namespace Normal.GorillaTemplate {
             try {
                 PlayFabClientAPI.LoginWithCustomID(
                     new LoginWithCustomIDRequest {
-                        CustomId = SystemInfo.deviceUniqueIdentifier,
+                        CustomId = userID,
                         CreateAccount = true,
                     },
                     delegate (LoginResult result) {

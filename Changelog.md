@@ -1,3 +1,6 @@
+[1.3.1]
+- Use Oculus.Platform.Models.User.OculusID instead of SystemInfo.deviceUniqueIdentifier to identify users on PlayFab
+
 [1.3.0]
 - Added support for PlayFab
 - Added in-app purchasing of virtual currency and cosmetics using PlayFab
