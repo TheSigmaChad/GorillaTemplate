@@ -59,6 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &1526470613710901247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &1599048367183671965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &1947304567186157978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &2057175615762404977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0534f92c4c22c7a43b8c55c151ba9fae, type: 3}
@@ -295,6 +303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &4741083195456508077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,6 +364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Hat_Wizard
 --- !u!1001 &4947352519912324819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -413,6 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &5100649521123530250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -574,6 +588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!1001 &5840459692876242441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -633,6 +649,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Hat_ParkingCone
 --- !u!1001 &6174786782256061869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,6 +710,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Hat_HornsRam
 --- !u!1001 &6535765160606836132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -746,6 +766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: Hat_RubberDuck
 --- !u!4 &6717412089086165583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed0ea84b30f031d4087848a88b285ede, type: 3}
@@ -805,6 +827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cosmeticNameOverrides: []
+  _catalog: Cosmetics
+  _itemId: 
 --- !u!4 &7605918058670490746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c7735836d79c5a84996e5d4fdf83ce56, type: 3}

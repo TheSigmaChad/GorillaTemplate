@@ -5,7 +5,7 @@ namespace Normal.GorillaTemplate.Keyboard {
     /// A simple pressable button.
     /// </summary>
     public class SimpleButton : ButtonBase {
-        public UnityAction onPressed;
+        public UnityEvent onPressed;
 
         protected override void HandlePress() {
             onPressed?.Invoke();

@@ -40,6 +40,26 @@ namespace Normal.GorillaTemplate.Wardrobe {
         [SerializeField]
         private List<string> _cosmeticNameOverrides = new List<string>();
 
+        [Header("PlayFab")]
+
+        [SerializeField]
+        [Tooltip("The PlayFab catalog version that the item belongs to.")]
+        private string _catalog = "Cosmetics";
+        [SerializeField]
+        [Tooltip("The ID of the item in the PlayFab catalog. If specified, the item must belong to the player's inventory to be wearable.")]
+        private string _itemId;
+
+        /// <summary>
+        /// The PlayFab catalog version that the item belongs to.
+        /// </summary>
+        public string catalog => _catalog;
+
+        /// <summary>
+        /// The ID of the item in the PlayFab catalog.
+        /// If specified, the item must belong to the player's inventory to be wearable.
+        /// </summary>
+        public string itemId => _itemId;
+
         private void Awake() {
             var wardrobeComputer = GetComponentInParent<IWardrobe>();
             if (wardrobeComputer == null) {

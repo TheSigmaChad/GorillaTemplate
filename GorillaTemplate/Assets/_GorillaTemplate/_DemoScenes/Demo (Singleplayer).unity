@@ -576,9 +576,9 @@ GameObject:
   - component: {fileID: 723947260}
   - component: {fileID: 723947261}
   - component: {fileID: 723947263}
-  - component: {fileID: 723947265}
   - component: {fileID: 723947262}
   - component: {fileID: 723947264}
+  - component: {fileID: 723947265}
   m_Layer: 0
   m_Name: Realtime + Gorilla Avatar (Singleplayer)
   m_TagString: Untagged
@@ -671,10 +671,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 723947259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2063045b4364fceb80518e82c06f7ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c28276fcecb34295b394c5a16799b270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarPrefab: {fileID: 430285557273465589, guid: 4fccf85de77b6f944935407633dc6536, type: 3}
 --- !u!1001 &938015248
 PrefabInstance:
   m_ObjectHideFlags: 0

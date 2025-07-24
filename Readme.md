@@ -24,7 +24,7 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 - Leaderboard
 - Cosmetics
 - Grabbable objects
-- PlayFab & in-app purchases (in-progress)
+- PlayFab & in-app purchases
 
 ### Getting Started
 1. [Download](https://github.com/NormalVR/GorillaTemplate/archive/refs/heads/main.zip) a copy of the template.
@@ -33,6 +33,7 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 4. Create a [normcore.io](https://normcore.io/?utm_source=github&utm_medium=referral&utm_campaign=gtag) account and generate an App Key.
 5. [Copy the App Key](https://docs.normcore.io/essentials/getting-started?utm_source=github&utm_medium=referral&utm_campaign=gtag#create-an-app-key) into the `Realtime` component.
 6. Enter Play Mode or Export a build for your device.
+7. To enable in-app purchases of cosmetics, [further setup](docs/economy.md) is needed to integrate with the Meta Horizon Store and PlayFab.
 
 ### Discord
 Need help? Have a feature request? Join our discord! https://discord.gg/aSfYnfhtE3

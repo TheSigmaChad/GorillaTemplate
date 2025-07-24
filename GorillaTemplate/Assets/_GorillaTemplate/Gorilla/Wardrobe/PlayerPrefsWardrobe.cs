@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Normal.GorillaTemplate.Cosmetics;
 using Normal.GorillaTemplate.Keyboard;
+using PlayFab.ClientModels;
+using TMPro;
 using UnityEngine;
 
 namespace Normal.GorillaTemplate.Wardrobe {
@@ -20,6 +22,17 @@ namespace Normal.GorillaTemplate.Wardrobe {
         /// </summary>
         [SerializeField]
         private GameObject _noneWardrobeItem;
+
+        [SerializeField]
+        [Tooltip("The currency code of the virtual currency used to purchase the item.")]
+        private string _virtualCurrencyCode = "BN";
+
+        [SerializeField]
+        [Tooltip("The text component that displays the price of the item if it is not owned.")]
+        private TMP_Text _priceText;
+
+        [SerializeField]
+        private ButtonBase _equipButton;
 
         /// <summary>
         /// The local avatar's cosmetics manager instance.
@@ -49,10 +62,16 @@ namespace Normal.GorillaTemplate.Wardrobe {
             foreach (var item in items) {
                 _items.Add(item);
             }
+
+            PlayFabManager.onCatalogChanged += OnCatalogChanged;
+            PlayFabManager.onInventoryChanged += OnInventoryChanged;
         }
 
         private void OnDestroy() {
             _gorillaPlayerManager.playerJoined -= OnPlayerJoined;
+
+            PlayFabManager.onCatalogChanged -= OnCatalogChanged;
+            PlayFabManager.onInventoryChanged -= OnInventoryChanged;
         }
 
         /// <summary>
@@ -85,12 +104,32 @@ namespace Normal.GorillaTemplate.Wardrobe {
                     if (enabledCosmetics.Contains(cosmeticName)) {
                         // + 1 to account for _noneWardrobeItem
                         _browsingIndex = _items.IndexOf(item) + 1;
+
+                        // Validate that the item is owned by the user. If not, un-equip it.
+                        if (!OwnsItem(item)) {
+                            _cosmeticsSync.SetEnabled(cosmeticName, false);
+                        }
+
                         break;
                     }
                 }
             }
 
+            // Save the loadout to the local device in case items were un-equipped due to ownership
+            // being revoked.
+            SaveLoadout();
+
             // Display the equipped item
+            BrowseItem(_browsingIndex);
+        }
+
+        private void OnCatalogChanged(string catalog, List<CatalogItem> items) {
+            // Update the pricing of the currently browsed item, if applicable
+            BrowseItem(_browsingIndex);
+        }
+
+        private void OnInventoryChanged(List<ItemInstance> items) {
+            // Update the ownership state of the currently browsed item, if applicable
             BrowseItem(_browsingIndex);
         }
 
@@ -151,6 +190,8 @@ namespace Normal.GorillaTemplate.Wardrobe {
             if (_browsingIndex == 0) {
                 HideAllItems();
 
+                DisplayPrice(0);
+
                 _noneWardrobeItem.SetActive(true);
             } else {
                 HideAllItems();
@@ -158,6 +199,7 @@ namespace Normal.GorillaTemplate.Wardrobe {
                 // - 1 to account for _noneWardrobeItem
                 var itemIndex = _browsingIndex - 1;
                 var item = _items[itemIndex];
+
                 DisplayItem(item);
             }
         }
@@ -170,8 +212,33 @@ namespace Normal.GorillaTemplate.Wardrobe {
             }
         }
 
-        private void DisplayItem(WardrobeItem itemToDisplay) {
+        private async void DisplayItem(WardrobeItem itemToDisplay) {
+            // Show the item.
             itemToDisplay.gameObject.SetActive(true);
+
+            // Get the price of the item from PlayFab, if applicable.
+            var price = 0;
+
+            if (!OwnsItem(itemToDisplay)) {
+                var catalogItem = await PlayFabManager.GetItemFromCatalogAsync(itemToDisplay.itemId, itemToDisplay.catalog);
+
+                if (catalogItem != null) {
+                    // If no price is set, show a price of zero
+                    price = (int)catalogItem.VirtualCurrencyPrices.GetValueOrDefault(_virtualCurrencyCode, 0u);
+                }
+            }
+
+            DisplayPrice(price);
+        }
+
+        private void DisplayPrice(int price) {
+            if (price > 0) {
+                _priceText.text = $"Price: {price}";
+                _equipButton.triggerMode = ButtonBase.TriggerMode.LongPress;
+            } else {
+                _priceText.text = string.Empty;
+                _equipButton.triggerMode = ButtonBase.TriggerMode.Press;
+            }
         }
 
         /// <summary>
@@ -180,9 +247,25 @@ namespace Normal.GorillaTemplate.Wardrobe {
         /// <remarks>
         /// Un-equips all other items registered to this wardrobe.
         /// </remarks>
-        private void EquipItem() {
+        private async void EquipItem() {
             // - 1 to account for _noneWardrobeItem
             var itemIndex = _browsingIndex - 1;
+
+            // Check if the user is entitled to the item they are trying to equip
+            if (itemIndex >= 0) {
+                var itemToEquip = _items[itemIndex];
+
+                // If the item is not in the player's inventory, try to purchase it
+                if (!OwnsItem(itemToEquip)) {
+                    if (await PlayFabManager.PurchaseItemAsync(itemToEquip.catalog, itemToEquip.itemId, _virtualCurrencyCode)) {
+                        // Clear the price text if the item was purchased successfully
+                        DisplayPrice(0);
+                    } else {
+                        // If the purchase failed, do not equip the item
+                        return;
+                    }
+                }
+            }
 
             // Loop over all registered items
             for (var i = 0; i < _items.Count; i++) {
@@ -199,6 +282,21 @@ namespace Normal.GorillaTemplate.Wardrobe {
 
             // Save the loadout to the local device
             SaveLoadout();
+        }
+
+        private bool OwnsItem(WardrobeItem item) {
+            // If playFab is not configured, make all items freely available
+            if (!PlayFabManager.isConfigured) {
+                return true;
+            }
+
+            // If the item does not have an ID, it is freely available to wear
+            if (string.IsNullOrEmpty(item.itemId)) {
+                return true;
+            }
+
+            // Check if the item is in the player's inventory
+            return PlayFabManager.IsItemInInventory(item.itemId);
         }
     }
 }
