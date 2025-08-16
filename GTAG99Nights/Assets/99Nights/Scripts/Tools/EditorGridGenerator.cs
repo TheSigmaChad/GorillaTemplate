@@ -11,16 +11,8 @@ public class EditorGridGenerator : MonoBehaviour
 
     [Header("Positioning")]
     public Vector3 centerOffset = Vector3.zero;
-
-    [Header("Height Noise Settings")]
-    [Tooltip("Controls the smoothness of the height changes.")]
-    public float noiseScale = 0.1f;
-    [Tooltip("Minimum height of the terrain.")]
-    public float minHeight = -2f;
-    [Tooltip("Maximum height of the terrain.")]
-    public float maxHeight = 2f;
-    [Tooltip("Noise offset to shift the terrain pattern.")]
-    public float noiseOffset = 0f;
+    [Tooltip("All tiles will be placed at this Y height (flat).")]
+    public float flatY = 0f;
 
     [Header("Level-Based Variation")]
     [Tooltip("Total number of levels for prefab changes.")]
@@ -32,12 +24,28 @@ public class EditorGridGenerator : MonoBehaviour
     public bool markTilesStatic = true;
     public bool clearExistingTiles = true;
 
+    [Header("Initialization Output")]
+    [Tooltip("Will be auto-created/linked and populated with the tiles + levels.")]
+    public GroundTileInitializer initializer;
+
+    [ContextMenu("Generate Grid")]
     public void GenerateGrid()
     {
         if (levelPrefabs == null || levelPrefabs.Length == 0)
         {
             Debug.LogError("Level Prefabs array is empty!");
             return;
+        }
+
+        // Ensure initializer exists
+        if (initializer == null)
+        {
+            initializer = GetComponent<GroundTileInitializer>();
+            if (initializer == null)
+            {
+                initializer = gameObject.AddComponent<GroundTileInitializer>();
+                Undo.RegisterCreatedObjectUndo(initializer, "Add GroundTileInitializer");
+            }
         }
 
         if (clearExistingTiles)
@@ -48,6 +56,9 @@ public class EditorGridGenerator : MonoBehaviour
             }
         }
 
+        // Clear initializer list for fresh population
+        initializer.tiles.Clear();
+
         float offset = (gridSize - 1) * spacing / 2f;
         Vector3 center = centerOffset;
 
@@ -55,22 +66,17 @@ public class EditorGridGenerator : MonoBehaviour
         {
             for (int z = 0; z < gridSize; z++)
             {
-                // Generate Perlin noise-based height
-                float noiseX = x * noiseScale + noiseOffset;
-                float noiseZ = z * noiseScale + noiseOffset;
-                float noiseValue = Mathf.PerlinNoise(noiseX, noiseZ); // [0, 1]
-                float yOffset = Mathf.Lerp(minHeight, maxHeight, noiseValue);
+                // Flat placement (no noise)
+                Vector3 pos = new Vector3(x * spacing - offset, flatY, z * spacing - offset) + centerOffset;
 
-                Vector3 pos = new Vector3(x * spacing - offset, yOffset, z * spacing - offset) + centerOffset;
-
-                // Determine level by distance from center
+                // Level by distance from center
                 float dist = Vector3.Distance(new Vector3(pos.x, 0, pos.z), new Vector3(center.x, 0, center.z));
                 int level = Mathf.Clamp(Mathf.FloorToInt(dist / levelRadiusStep), 0, numberOfLevels - 1);
 
                 // Choose appropriate prefab
                 GameObject prefab = (level < levelPrefabs.Length && levelPrefabs[level] != null)
                     ? levelPrefabs[level]
-                    : levelPrefabs[0]; // fallback to first prefab if null or missing
+                    : levelPrefabs[0];
 
                 GameObject tile = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
                 tile.transform.SetParent(transform);
@@ -78,11 +84,15 @@ public class EditorGridGenerator : MonoBehaviour
                 tile.transform.rotation = Quaternion.identity;
                 tile.transform.localScale = Vector3.one;
 
-                // Init the tile with level info
-                GroundTile tileScript = tile.GetComponent<GroundTile>();
-                if (tileScript != null)
+                // Record in initializer (no Init call here)
+                var gt = tile.GetComponent<GroundTile>();
+                if (gt != null)
                 {
-                    tileScript.Init(level);
+                    initializer.tiles.Add(new GroundTileInitializer.TileEntry
+                    {
+                        tile = gt,
+                        level = level
+                    });
                 }
 
                 tile.isStatic = markTilesStatic;
@@ -90,7 +100,7 @@ public class EditorGridGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log($"Generated {gridSize * gridSize} tiles using {levelPrefabs.Length} level-based prefabs with Perlin noise height variation.");
+        Debug.Log($"Generated {gridSize * gridSize} tiles and populated GroundTileInitializer with {initializer.tiles.Count} entries (no Init calls made).");
     }
 }
 #endif

@@ -366,11 +366,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
+  CanSpawnEntities: 1
+  FlatGround: 0
   groundPlane: {fileID: 890732976222348860}
   spawnables:
   - {fileID: 11400000, guid: f877226a2855f4247accc4fc782c7e43, type: 2}
   minSpawnCount: 1
-  maxSpawnCount: 5
+  maxSpawnCount: 3
+  spawnChance: 25
 --- !u!1 &4315987288535211770
 GameObject:
   m_ObjectHideFlags: 0

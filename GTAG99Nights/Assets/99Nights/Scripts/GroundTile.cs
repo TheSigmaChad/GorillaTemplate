@@ -6,13 +6,17 @@ public class GroundTile : MonoBehaviour
     [Header("Tile Properties")]
     public TileType tileType;
 
+    [SerializeField] public bool CanSpawnEntities = true;
+    [SerializeField] public bool FlatGround = false;
+
     [Header("Spawn Area")]
     [SerializeField] private Transform groundPlane;
     [SerializeField] private List<TileSpawnable> spawnables;
 
     [Header("Randomization")]
-    [SerializeField] private int minSpawnCount = 10;
-    [SerializeField] private int maxSpawnCount = 25;
+    [SerializeField] private int minSpawnCount = 1;
+    [SerializeField] private int maxSpawnCount = 3;
+    [SerializeField] private int spawnChance = 75;
 
     public void Init(int level)
     {
@@ -22,36 +26,82 @@ public class GroundTile : MonoBehaviour
             return;
         }
 
-        List<TileSpawnable> validSpawnables = GetValidSpawnables(level);
-        if (validSpawnables.Count == 0) return;
-
-        List<Bounds> placedBounds = new List<Bounds>();
-        Vector3 origin = groundPlane.position;
-        Vector3 size = groundPlane.localScale * 10f; // adjust as needed for your tile system
-
-        int totalSpawns = Random.Range(minSpawnCount, maxSpawnCount + 1);
-
-        for (int i = 0; i < totalSpawns; i++)
+        if (CanSpawnEntities)
         {
-            TileSpawnable chosen = validSpawnables[Random.Range(0, validSpawnables.Count)];
-            if (chosen?.prefab == null) continue;
+            // CreateSpawnables(level);
+        }
 
-            const int maxAttempts = 10;
-            bool placed = false;
+        if (!FlatGround)
+        {
+            // Change the shaders position material property block
+            OffsetTile();
+        }
 
-            for (int attempt = 0; attempt < maxAttempts && !placed; attempt++)
+
+    }
+
+    private void CreateSpawnables(int level)
+{
+    List<TileSpawnable> validSpawnables = GetValidSpawnables(level);
+    if (validSpawnables.Count == 0) return;
+
+    List<Bounds> placedBounds = new List<Bounds>();
+    Vector3 origin = groundPlane.position;
+    Vector3 size = groundPlane.localScale * 10f;
+
+    int totalSpawns = Random.Range(minSpawnCount, maxSpawnCount + 1);
+
+    for (int i = 0; i < totalSpawns; i++)
+    {
+        // First roll global chance
+        if (Random.Range(0, 100) > spawnChance) // <-- you can expose this per-tile too
+            continue;
+
+        // Weighted choice among spawnables that pass their own SpawnChance
+        TileSpawnable chosen = GetWeightedRandomSpawnable(validSpawnables);
+        if (chosen == null || chosen.prefab == null) continue;
+
+        const int maxAttempts = 10;
+        bool placed = false;
+
+        for (int attempt = 0; attempt < maxAttempts && !placed; attempt++)
+        {
+            Vector3 randomPos = GetRandomPositionInTile(origin, size);
+            Bounds newBounds = GetPrefabBounds(chosen.prefab, randomPos);
+
+            if (!OverlapsExisting(newBounds, placedBounds))
             {
-                Vector3 randomPos = GetRandomPositionInTile(origin, size);
-                Bounds newBounds = GetPrefabBounds(chosen.prefab, randomPos);
-
-                if (!OverlapsExisting(newBounds, placedBounds))
-                {
-                    GameObject obj = Instantiate(chosen.prefab, randomPos, Quaternion.identity, transform);
-                    placedBounds.Add(GetObjectBounds(obj));
-                    placed = true;
-                }
+                GameObject obj = Instantiate(chosen.prefab, randomPos, Quaternion.identity, transform);
+                placedBounds.Add(GetObjectBounds(obj));
+                placed = true;
             }
         }
+    }
+}
+
+private TileSpawnable GetWeightedRandomSpawnable(List<TileSpawnable> candidates)
+{
+    // Filter by per-spawnable chance
+    List<TileSpawnable> filtered = candidates.FindAll(s => Random.Range(0, 100) < s.SpawnChance);
+    if (filtered.Count == 0) return null;
+
+    int totalWeight = 0;
+    foreach (var s in filtered) totalWeight += s.Weight;
+
+    int roll = Random.Range(0, totalWeight);
+    foreach (var s in filtered)
+    {
+        if (roll < s.Weight) return s;
+        roll -= s.Weight;
+    }
+
+    return null;
+}
+
+
+    private void OffsetTile()
+    {
+        // Offset the tile
     }
 
     private List<TileSpawnable> GetValidSpawnables(int level)
