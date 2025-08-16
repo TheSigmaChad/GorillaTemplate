@@ -4,34 +4,43 @@ using UnityEngine;
 [CustomEditor(typeof(EditorGridGenerator))]
 public class EditorGridGeneratorEditor : Editor
 {
-    private SerializedProperty tilePrefab;
     private SerializedProperty gridSize;
     private SerializedProperty spacing;
-    private SerializedProperty heightVariance;
 
     private SerializedProperty centerOffset;
+
+    private SerializedProperty noiseScale;
+    private SerializedProperty minHeight;
+    private SerializedProperty maxHeight;
+    private SerializedProperty noiseOffset;
+
     private SerializedProperty numberOfLevels;
     private SerializedProperty levelRadiusStep;
-    private SerializedProperty levelMaterials;
+    private SerializedProperty levelPrefabs;
 
     private SerializedProperty markTilesStatic;
     private SerializedProperty clearExistingTiles;
 
     private bool showGridSettings = true;
+    private bool showHeightSettings = true;
     private bool showLevelSettings = true;
     private bool showBatchSettings = true;
 
     void OnEnable()
     {
-        tilePrefab = serializedObject.FindProperty("tilePrefab");
         gridSize = serializedObject.FindProperty("gridSize");
         spacing = serializedObject.FindProperty("spacing");
-        heightVariance = serializedObject.FindProperty("heightVariance");
 
         centerOffset = serializedObject.FindProperty("centerOffset");
+
+        noiseScale = serializedObject.FindProperty("noiseScale");
+        minHeight = serializedObject.FindProperty("minHeight");
+        maxHeight = serializedObject.FindProperty("maxHeight");
+        noiseOffset = serializedObject.FindProperty("noiseOffset");
+
         numberOfLevels = serializedObject.FindProperty("numberOfLevels");
         levelRadiusStep = serializedObject.FindProperty("levelRadiusStep");
-        levelMaterials = serializedObject.FindProperty("levelMaterials");
+        levelPrefabs = serializedObject.FindProperty("levelPrefabs");
 
         markTilesStatic = serializedObject.FindProperty("markTilesStatic");
         clearExistingTiles = serializedObject.FindProperty("clearExistingTiles");
@@ -44,36 +53,48 @@ public class EditorGridGeneratorEditor : Editor
         GUIStyle foldoutStyle = EditorStyles.foldoutHeader;
         foldoutStyle.fontStyle = FontStyle.Bold;
 
+        // Grid Settings
         showGridSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showGridSettings, "Grid Settings", foldoutStyle);
         if (showGridSettings)
         {
-            EditorGUILayout.PropertyField(tilePrefab);
             EditorGUILayout.PropertyField(gridSize);
             EditorGUILayout.PropertyField(spacing);
-            EditorGUILayout.PropertyField(heightVariance);
+            EditorGUILayout.PropertyField(centerOffset);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
 
-        showLevelSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showLevelSettings, "Level-Based Materials", foldoutStyle);
+        // Height Settings (Perlin Noise)
+        showHeightSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showHeightSettings, "Height Noise Settings", foldoutStyle);
+        if (showHeightSettings)
+        {
+            EditorGUILayout.PropertyField(noiseScale);
+            EditorGUILayout.PropertyField(minHeight);
+            EditorGUILayout.PropertyField(maxHeight);
+            EditorGUILayout.PropertyField(noiseOffset);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // Level-based prefab spawning
+        showLevelSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showLevelSettings, "Level-Based Prefabs", foldoutStyle);
         if (showLevelSettings)
         {
-            EditorGUILayout.PropertyField(centerOffset);
             EditorGUILayout.PropertyField(numberOfLevels);
             EditorGUILayout.PropertyField(levelRadiusStep);
 
             EditorGUILayout.Space(5);
-            EditorGUILayout.LabelField("Materials by Level", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Prefabs by Level", EditorStyles.boldLabel);
 
-            levelMaterials.arraySize = Mathf.Max(0, numberOfLevels.intValue);
+            levelPrefabs.arraySize = Mathf.Max(0, numberOfLevels.intValue);
 
-            for (int i = 0; i < levelMaterials.arraySize; i++)
+            for (int i = 0; i < levelPrefabs.arraySize; i++)
             {
-                SerializedProperty matProp = levelMaterials.GetArrayElementAtIndex(i);
-                EditorGUILayout.PropertyField(matProp, new GUIContent($"Level {i} Material"));
+                SerializedProperty prefabProp = levelPrefabs.GetArrayElementAtIndex(i);
+                EditorGUILayout.PropertyField(prefabProp, new GUIContent($"Level {i} Prefab"));
             }
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
 
+        // Batching / utility settings
         showBatchSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showBatchSettings, "Batching & Utilities", foldoutStyle);
         if (showBatchSettings)
         {

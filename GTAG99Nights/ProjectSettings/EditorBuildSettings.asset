@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_GorillaTemplate/_DemoScenes/Demo (Multiplayer Forest).unity
     guid: ff69b630a16b2e640b7a8cf3eb03967a
   - enabled: 0
     path: Assets/_GorillaTemplate/_DemoScenes/Demo (Multiplayer).unity
     guid: 10bff204df03b3a4aa5b5da6a6f9b770
+  - enabled: 1
+    path: Assets/99Nights/Scenes/PrototypeScene.unity
+    guid: 64457b017a2c1f842aa33534996f1b7f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a1c5c0da903480744ab1b7b38376f126, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d30355ffd2a462f48963c08101163154, type: 3}
