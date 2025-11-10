@@ -25,6 +25,7 @@ Need a feature for your game that's missing? Join our [Discord](https://discord.
 - Cosmetics
 - Grabbable objects
 - PlayFab & in-app purchases
+- Networked sound effects
 
 ### Getting Started
 1. [Download](https://github.com/NormalVR/GorillaTemplate/archive/refs/heads/main.zip) a copy of the template.
@@ -44,5 +45,35 @@ Have you created a YouTube tutorial or TikTok? Let us know in [Discord](https://
 <a href="https://www.youtube.com/watch?v=cYANUINPako">
   <img src="./docs/assets/tutorials/garett_the_gamer.jpg" alt="How to Make a Gorilla Tag Fan Game in 5 Minutes 👍" width="50%" />
   <br>
-  How to Make a Gorilla Tag Fan Game in 5 Minutes 👍
+  Garett_The_Gamer: How to Make a Gorilla Tag Fan Game in 5 Minutes 👍 
 </a>
+
+<br><br>
+
+<a href="https://www.youtube.com/watch?v=EOj-AsA8gKc">
+  <img src="./docs/assets/tutorials/beob.jpg" alt="YOU Can Make a Gorilla Tag Fangame In Less Than 5 Minutes!" width="50%" />
+  <br>
+  beob: YOU Can Make a Gorilla Tag Fangame In Less Than 5 Minutes!
+</a>
+
+<br><br>
+
+<a href="https://www.youtube.com/watch?v=IpqoXa4_sME">
+  <img src="./docs/assets/tutorials/snow_gt.jpg" alt="How to add cosmetics to your GorillaTemplate with playfab!" width="50%" />
+  <br>
+  SnowGT: How to add cosmetics to your GorillaTemplate with playfab!
+</a>
+
+### License
+Gorilla Template is licensed under the MIT License with Creator Protection Clause. This means you can:
+
+✅ **Allowed**:
+- Use Gorilla Template for any purpose (personal, commercial, academic)
+- Modify the code
+- Distribute copies
+- Create and sell products built using Gorilla Template
+
+❌ **Not Allowed**:
+- Use it to build or promote a product that competes with [Normcore](https://normcore.io/) (Normal's multiplayer framework)
+
+See the [License](License.md) file for the complete license text for more information.

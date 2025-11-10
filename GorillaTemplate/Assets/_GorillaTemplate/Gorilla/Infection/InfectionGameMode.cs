@@ -10,11 +10,11 @@ using Random = UnityEngine.Random;
 namespace Normal.GorillaTemplate.Infection {
     /// <summary>
     /// Runs logic for the infection game mode.
-    /// This is a singleton as well as an <see cref="IAutoDistributedOwnership"/>, meaning it always
-    /// has an owner.
+    /// This is a singleton and uses <see cref="AutoDistributeViewOwnership"/>, meaning it always has an owner.
     /// Ownership transfer is seamless because all of its state is contained in the datastore.
     /// </summary>
-    public class InfectionGameMode : RealtimeSingleton<InfectionGameMode, InfectionGameModeModel>, IAutoDistributedOwnership {
+    [RequireComponent(typeof(AutoDistributeViewOwnership))]
+    public class InfectionGameMode : RealtimeSingleton<InfectionGameMode, InfectionGameModeModel> {
         public enum State {
             /// <summary>
             /// Waiting for more players to join before starting the game.
@@ -30,12 +30,38 @@ namespace Normal.GorillaTemplate.Infection {
             /// The game has ended and we're waiting to reset it.
             /// </summary>
             Ended,
+
+            /// <summary>
+            /// The gamemode is entirely disabled.
+            /// </summary>
+            Disabled,
         }
 
         public State? CurrentState => model?.state;
 
-        // From IAutoDistributedOwnership
-        public bool isOwnerConfirmed { get; set; }
+        public bool GameModeIsDisabled {
+            get {
+                if (model == null) {
+                    return false;
+                }
+
+                return model.state == State.Disabled;
+            }
+
+            set {
+                if (model == null) {
+                    Debug.LogWarning($"{nameof(GameModeIsDisabled)} setter: No model assigned yet, skipping");
+                    return;
+                }
+
+                if (!isOwnerConfirmed) {
+                    Debug.LogWarning($"{nameof(GameModeIsDisabled)} setter: Only the confirmed owner can set the value, skipping");
+                    return;
+                }
+
+                model.state = value ? State.Disabled : State.WaitingForPlayers;
+            }
+        }
 
         [SerializeField]
         private Realtime.Realtime _realtime;
@@ -63,7 +89,22 @@ namespace Normal.GorillaTemplate.Infection {
         [SerializeField]
         private bool _debugLog;
 
+        private AutoDistributeViewOwnership _autoDistributeOwnership;
+        private bool isOwnerConfirmed => _autoDistributeOwnership.isLocallyOwnedConfirmed;
+
+        protected override void OnRealtimeModelReplaced(InfectionGameModeModel previousModel, InfectionGameModeModel currentModel) {
+            // Are we creating this model?
+            if (currentModel != null && currentModel.isFreshModel) {
+                // Is the component enabled?
+                if (!isActiveAndEnabled) {
+                    currentModel.state = State.Disabled;
+                }
+            }
+        }
+
         private void Start() {
+            _autoDistributeOwnership = GetComponent<AutoDistributeViewOwnership>();
+
             _gorillaPlayerManager.playerJoined += OnPlayerJoined;
             _gorillaPlayerManager.playerLeft += OnPlayerLeft;
         }
@@ -93,7 +134,7 @@ namespace Normal.GorillaTemplate.Infection {
             }
 
             // Infect new players (unless playing regular tag and not infection)
-            if (_gorillaPlayerManager.avatars.Count >= _minNumberOfPlayersToStartInfection) {
+            if (_gorillaPlayerManager.avatars.Count >= _minNumberOfPlayersToStartInfection && GameModeIsDisabled == false) {
                 var avatarRealtimeView = avatar.GetComponent<RealtimeView>();
                 SetIsInfected(avatarRealtimeView.ownerIDSelf, true);
             }
@@ -129,6 +170,8 @@ namespace Normal.GorillaTemplate.Infection {
                 TryEndGame();
             } else if (state == State.Ended) {
                 TryResetGame();
+            } else if (state == State.Disabled) {
+                TryDisableGame();
             }
         }
 
@@ -182,6 +225,17 @@ namespace Normal.GorillaTemplate.Infection {
 
                 // Run an iteration of TryStartGame() right away to prevent infection skin flicker due to a 1-frame delay
                 TryStartGame();
+            }
+        }
+
+        /// <summary>
+        /// Disables the gamemode (resets state).
+        /// </summary>
+        private void TryDisableGame() {
+            if (NumInfected() > 0) {
+                DebugLog($"Reset game");
+
+                ClearInfected();
             }
         }
 
